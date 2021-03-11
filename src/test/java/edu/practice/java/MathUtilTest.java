@@ -6,12 +6,13 @@ import org.junit.jupiter.api.*;
 
 import java.lang.Exception.*;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MathUtilTest {
 
     MathUtil mathUtils;
 
     @BeforeAll
-    static void beforeAllInit(){
+    void beforeAllInit(){
         System.out.println("This need to run before all.");
     }
 
