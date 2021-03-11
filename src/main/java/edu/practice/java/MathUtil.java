@@ -6,6 +6,10 @@ public class MathUtil {
         return a + b;
     }
 
+    public static int addStatic(int a, int b){
+        return a + b;
+    }
+
     public double computeCircleArea(double radius){
         return Math.PI * radius * radius;
     }
