@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 public class MathUtilTest {
 
     MathUtil mathUtils;
+    TestInfo testInfo;
+    TestReporter testReporter;
 
     @BeforeAll
     static void beforeAllInit(){
@@ -17,8 +19,11 @@ public class MathUtilTest {
     }
 
     @BeforeEach
-    void setup(){
+    void setup(TestInfo testInfo, TestReporter testReporter){
+        this.testInfo = testInfo;
+        this.testReporter = testReporter;
         mathUtils = new MathUtil();
+        testReporter.publishEntry("Running " + testInfo.getDisplayName() + " with tags " + testInfo.getTags());
     }
 
     @AfterEach
