@@ -38,7 +38,7 @@ public class MathUtilTest {
         @Test
         @DisplayName("Testing add negative numbers.")
         void testAddNegative(){
-            assertEquals(-2, mathUtils.add(-1,-1), "should return the right sum.");
+            assertEquals(-2, mathUtils.add(-1,-1), () -> "should return the right sum.");
         }
     }
 
