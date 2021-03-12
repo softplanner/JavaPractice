@@ -1,10 +1,9 @@
 package edu.practice.java;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.*;
 
-import java.lang.Exception.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MathUtilTest {
@@ -12,7 +11,7 @@ public class MathUtilTest {
     MathUtil mathUtils;
 
     @BeforeAll
-    void beforeAllInit(){
+    static void beforeAllInit(){
         System.out.println("This need to run before all.");
     }
 
@@ -27,6 +26,7 @@ public class MathUtilTest {
     }
 
     @Test
+    @DisplayName("Testing add method.")
     void testAdd(){
         int expected = 2;
         int actual = mathUtils.add(1,1);
@@ -34,6 +34,7 @@ public class MathUtilTest {
     }
 
     @Test
+    @DisplayName("Testing method compute circle area.")
     void testCircleArea(){
         assertEquals(314.1592653589793,
                 mathUtils.computeCircleArea(10.0),
@@ -41,28 +42,19 @@ public class MathUtilTest {
     }
 
     @Test
+    @DisplayName("Testing divide method using assumption.")
     void testDivide(){
+        boolean isServerUp = true;
+        assumeTrue(isServerUp); // if false then ignore the test
         assertThrows(ArithmeticException.class,
                 () -> mathUtils.divide(1,0),
                 "divide by 0 should throw exception.");
     }
 
-    // assumption example
     @Test
-    void testOnDev()
-    {
-        System.setProperty("ENV", "DEV");
-        Assumptions.assumeTrue("DEV".equals(System.getProperty("ENV")), MathUtilTest::message);
-    }
-
-    @Test
-    void testOnProd()
-    {
-        System.setProperty("ENV", "PROD");
-        Assumptions.assumeFalse("DEV".equals(System.getProperty("ENV")));
-    }
-
-    private static String message () {
-        return "TEST Execution Failed :: ";
+    @Disabled
+    @DisplayName("TODO method, should not run.")
+    void testSomething(){
+        fail("implements late.");
     }
 }
