@@ -27,6 +27,7 @@ public class MathUtilTest {
     }
 
     @Nested
+    @Tag("Math")
     class TestAdd {
 
         @Test
@@ -42,15 +43,9 @@ public class MathUtilTest {
         }
     }
 
-    //@Test
-    @RepeatedTest(3)
-    @DisplayName("Testing method compute circle area.")
-    void testCircleArea(){
-        assertEquals(314.1592653589793, mathUtils.computeCircleArea(10.0), "should return correct area value");
-    }
-
     @Test
     @DisplayName("Testing divide method using assumption.")
+    @Tag("Math")
     void testDivide(){
         boolean isServerUp = true;
         assumeTrue(isServerUp); // if false then ignore the test
@@ -61,12 +56,21 @@ public class MathUtilTest {
 
     @Test
     @DisplayName("Testing multiply method.")
+    @Tag("Math")
     void testMultiply(){
         assertAll(
                 () -> assertEquals(4, mathUtils.multiply(2,2), "should return the right product."),
                 () -> assertEquals(0, mathUtils.multiply(2,0), "should return the right product."),
                 () -> assertNotEquals(8, mathUtils.multiply(5,2), "should return the right product.")
         );
+    }
+
+    //@Test
+    @RepeatedTest(3)
+    @DisplayName("Testing method compute circle area.")
+    @Tag("Circle")
+    void testCircleArea(){
+        assertEquals(314.1592653589793, mathUtils.computeCircleArea(10.0), "should return correct area value");
     }
 
     @Test
