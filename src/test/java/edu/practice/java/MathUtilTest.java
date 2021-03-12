@@ -5,6 +5,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
+@DisplayName("When running MathUtils")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MathUtilTest {
 
@@ -25,12 +26,20 @@ public class MathUtilTest {
         System.out.println("de-allocating resources.");
     }
 
-    @Test
-    @DisplayName("Testing add method.")
-    void testAdd(){
-        int expected = 2;
-        int actual = mathUtils.add(1,1);
-        assertEquals(expected, actual);
+    @Nested
+    class TestAdd {
+
+        @Test
+        @DisplayName("Testing add positive numbers.")
+        void testAddPositive(){
+            assertEquals(2, mathUtils.add(1,1), "should return the right sum.");
+        }
+
+        @Test
+        @DisplayName("Testing add negative numbers.")
+        void testAddNegative(){
+            assertEquals(-2, mathUtils.add(-1,-1), "should return the right sum.");
+        }
     }
 
     @Test
