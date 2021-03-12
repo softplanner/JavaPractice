@@ -42,12 +42,11 @@ public class MathUtilTest {
         }
     }
 
-    @Test
+    //@Test
+    @RepeatedTest(3)
     @DisplayName("Testing method compute circle area.")
     void testCircleArea(){
-        assertEquals(314.1592653589793,
-                mathUtils.computeCircleArea(10.0),
-                "should return correct area value");
+        assertEquals(314.1592653589793, mathUtils.computeCircleArea(10.0), "should return correct area value");
     }
 
     @Test
