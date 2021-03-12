@@ -17,4 +17,8 @@ public class MathUtil {
     public int divide(int numerator, int denominator){
         return numerator/denominator;
     }
+
+    public int multiply(int num1, int num2) {
+        return num1 * num2;
+    }
 }

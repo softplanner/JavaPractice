@@ -52,6 +52,16 @@ public class MathUtilTest {
     }
 
     @Test
+    @DisplayName("Testing multiply method.")
+    void testMultiply(){
+        assertAll(
+                () -> assertEquals(4, mathUtils.multiply(2,2), "should return the right product."),
+                () -> assertEquals(0, mathUtils.multiply(2,0), "should return the right product."),
+                () -> assertNotEquals(8, mathUtils.multiply(5,2), "should return the right product.")
+        );
+    }
+
+    @Test
     @Disabled
     @DisplayName("TODO method, should not run.")
     void testSomething(){
